@@ -5,7 +5,7 @@
 
 <html lang="pt-BR">
     <head>
-        <title>Home Editada - Sistema Unico Editado</title>
+        <title>Home  - Sistema Unico </title>
     </head>
 
     <body>
