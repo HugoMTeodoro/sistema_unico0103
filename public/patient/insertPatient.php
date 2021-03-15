@@ -1,3 +1,5 @@
+<?php include("../auth/valida.php")?>
+
 <?php
 
     include_once("../../data/db_connection.php");

@@ -1,3 +1,6 @@
+<?php include("../auth/validaMedico.php")?>
+
+
 <?php
 
     include_once("../../data/db_connection.php");

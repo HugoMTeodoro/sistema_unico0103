@@ -1,3 +1,5 @@
+<?php include("../auth/valida.php")?>
+
 <?php include("../templates/header.php")?>
 
 <html lang="en">

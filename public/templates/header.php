@@ -42,9 +42,6 @@
           </li>
           <!-- testar se a pessoa está logada para mostrar esse botão-->
           <li class="nav-item">
-            <a class="nav-link" href="../auth/login.php">Login</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="../auth/sair.php">Sair</a>
           </li>
         </ul>

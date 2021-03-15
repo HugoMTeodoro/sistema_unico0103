@@ -1,3 +1,4 @@
+<?php include("../auth/validaMedico.php")?>
 <?php include("../templates/header.php")?>
 
 <br>
