@@ -13,13 +13,11 @@ if (isset($_SESSION['medico']) or isset($_SESSION['paciente']) or isset($_SESSIO
 ?>
 
 
-
-
 <?php include("../templates/header.php")?>
 
 <html lang="pt-BR">
     <head>
-        <title>Home - Sistema Unico</title>
+        <title>Home Editada - Sistema Unico Editado</title>
     </head>
 
     <body>
