@@ -9,7 +9,7 @@ if (isset($_SESSION['paciente']) ) {
     </script>
     <?php
 } else {
-    if (isset($_SESSION['adm'])) {
+    if (isset($_SESSION['adm'])or isset($_SESSION['medico'])) {
     } else {
     ?>
         <script>
