@@ -10,10 +10,6 @@
       <div class="login-main-text">
          <h2>Sistema Unico<br></h2>
          <p>Faça o login ou registre-se por aqui.<br></p>
-         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. At et neque aliquam velit quis explicabo suscipit enim dolore, dolorum excepturi beatae error est blanditiis placeat saepe omnis delectus similique perspiciatis?
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic necessitatibus aspernatur facere atque assumenda pariatur? Voluptates ex laboriosam ratione sequi fugit maiores, magni ipsum fugiat numquam ducimus quia ea blanditiis?s
-         </p>
       </div>
    </div>
    <div class="main">

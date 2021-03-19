@@ -23,27 +23,49 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="../home/home.php">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../doctor/listDoctor.php">Médicos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../medicalConsultation/listMedicalConsult.php">Consultas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../medicalRecord/listMedicalRecord.php">Prontuários</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../patient/listPatient.php">Pacientes</a>
-          </li>
-          <!-- testar se a pessoa está logada para mostrar esse botão-->
-          <li class="nav-item">
-            <a class="nav-link" href="../auth/sair.php">Sair</a>
-          </li>
+        
+          <?php
+              if(isset($_SESSION['medico']) or isset($_SESSION['paciente']) or isset($_SESSION['adm'])){
+            ?>
+                <li class="nav-item active">
+                  <a class="nav-link" href="../home/home.php">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../medicalRecord/listMedicalRecord.php">Prontuários</a>
+                </li>
+            <?php
+              }
+            ?>
+
+          <?php
+            //session_start();
+            if (isset($_SESSION['adm']) or isset($_SESSION['medico'])) {
+              ?>
+              <li class="nav-item">
+                <a class="nav-link" href="../doctor/listDoctor.php">Médicos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../medicalConsultation/listMedicalConsult.php">Consultas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../patient/listPatient.php">Pacientes</a>
+              </li>
+              <?php
+            }
+          ?>
+
+          <?php
+              if(isset($_SESSION['medico']) or isset($_SESSION['paciente']) or isset($_SESSION['adm'])){
+            ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="../auth/sair.php">Sair</a>
+                </li>
+            <?php
+              }
+            ?>
+          
         </ul>
       </div>
     </div>
