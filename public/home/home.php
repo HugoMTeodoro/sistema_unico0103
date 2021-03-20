@@ -1,6 +1,5 @@
 <?php include("../auth/validar.php")?>
 
-
 <?php include("../templates/header.php")?>
 
 <html lang="pt-BR">
