@@ -17,6 +17,11 @@
          <div class="login-form">
             <form class="form-signin" method="POST" action="login.php">
                <div class="form-group">
+                  <!-- 
+                     Prioridade = 0 : Administrador
+                     Prioridade = 1 : Medico
+                     Prioridade = 2 : Paciente 
+                  -->
                   <label>Usuário</label>
                   <input name="user" type="text" class="form-control" placeholder="Username">
                </div>

@@ -13,8 +13,3 @@
     
 ?>
 
-<!-- 
-    Prioridade = 0 : Administrador
-    Prioridade = 1 : Medico
-    Prioridade = 2 : Paciente 
--->
