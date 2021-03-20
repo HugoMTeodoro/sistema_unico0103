@@ -1,4 +1,4 @@
-<?php include("../auth/valida.php")?>
+<?php include("../auth/validar.php")?>
 
 <?php include("../templates/header.php")?>
 

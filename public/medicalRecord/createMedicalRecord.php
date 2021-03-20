@@ -1,12 +1,25 @@
 <?php include("../auth/validaMedico.php")?>
 
-<?php include("../templates/header.php");
-      include_once("../../data/db_connection.php");
+<?php 
+    include("../templates/header.php");
+    include_once("../../data/db_connection.php");
+
+    if(isset($_GET["id"]))
+    {
+        $consulta_id = $_GET["id"];
+        $sqlConsulta = "SELECT * FROM consulta WHERE consulta_id = " . $consulta_id;
+        $resultado = $connection->query($sqlConsulta);
+        $consulta = $resultado->fetch_assoc();
+        $consultaData = $consulta["data_consulta"];
+        $paciente_cpf = $consulta["paciente_cpf"];
+        $crm_medico = $consulta["crm_medico"];
+    }
+
 ?>
 
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf8mb4_general_ci">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de prontuário</title>
 </head>
@@ -81,13 +94,22 @@
                         {
 
                             while($row = $medicos -> fetch_assoc()){
+                                if($row["CRM"] === $crm_medico)
+                                {
                     ?>
-                    
-                    <option value="<?php echo $row["CRM"]?>">
-                        <?php echo $row["nome"] . " - CRM: " . $row["CRM"]?>
-                    </option>
-                    
+                                    <option value="<?php echo $row["CRM"]?>" selected>
+                                        <?php echo $row["nome"] . " - CRM: " . $row["CRM"]?>
+                                    </option>
                     <?php
+                                }
+                                else
+                                {
+                    ?>
+                                    <option value="<?php echo $row["CRM"]?>">
+                                        <?php echo $row["nome"] . " - CRM: " . $row["CRM"]?>
+                                    </option>
+                    <?php
+                                }
                             }
                         }
                     ?>
@@ -110,13 +132,22 @@
                         {
 
                             while($row = $pacientes -> fetch_assoc()){
+                                if($row["CPF"] === $paciente_cpf)
+                                {
                     ?>
-                    
-                        <option value="<?php echo $row["CPF"]?>">
-                            <?php echo $row["nome"] . " - CPF: " . $row["CPF"]?>
-                        </option>
-                    
+                                    <option value="<?php echo $row["CPF"]?>" selected>
+                                        <?php echo $row["nome"] . " - CPF: " . $row["CPF"]?>
+                                    </option>
                     <?php
+                                }
+                                else
+                                {
+                    ?>
+                                    <option value="<?php echo $row["CPF"]?>">
+                                        <?php echo $row["nome"] . " - CPF: " . $row["CPF"]?>
+                                    </option>
+                    <?php
+                                }
                             }
                         }
                     ?>
@@ -140,13 +171,22 @@
                         {
 
                             while($row = $consultas -> fetch_assoc()){
+                                if($row["consulta_id"] === $consulta_id)
+                                {
                     ?>
-                    
-                        <option value="<?php echo $row["consulta_id"]?>">
-                            <?php echo "Data: " . $row["data_consulta"]?>
-                        </option>
-                    
+                                    <option value="<?php echo $row["consulta_id"]?>" selected>
+                                        <?php echo "Data: " . $row["data_consulta"]?>
+                                    </option>
                     <?php
+                                }
+                                else
+                                {
+                    ?>
+                                    <option value="<?php echo $row["consulta_id"]?>" selected>
+                                        <?php echo "Data: " . $row["data_consulta"]?>
+                                    </option>
+                    <?php
+                                }
                             }
                         }
                     ?>
