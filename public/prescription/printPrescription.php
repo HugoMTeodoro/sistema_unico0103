@@ -265,7 +265,7 @@
                 </p>
                 
                 <p class="c20">
-                    <span class="c18">Esse prontu&aacute;rio foi gerado automaticamente pelo Sistema &Uacute;nico.</span>
+                    <span class="c18">Essa receita foi gerado automaticamente pelo Sistema &Uacute;nico.</span>
                 </p>
                 <br>
                 <p class="c5">
