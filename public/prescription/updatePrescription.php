@@ -17,10 +17,6 @@
         periodo = " . $periodo . ", posologia = '" . $posologia . "', medicamento = '" . $medicamento . "' 
         WHERE id = " . $id;
 
-        $sql = "INSERT INTO 
-        receita (crm_medico, cpf_paciente, periodo, posologia, medicamento)
-        VALUES('$crm_medico', '$cpf_paciente', '$periodo', '$posologia', '$medicamento')";
-
         $resultado = $connection -> query($sql);
 
         if($resultado)
