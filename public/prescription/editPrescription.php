@@ -1,8 +1,9 @@
-<?php include("../auth/valida.php")?>
 
 <?php
     include("../templates/header.php");
     include_once("../../data/db_connection.php");
+    include("../templates/header.php")
+
 ?>
 
 <?php
@@ -21,8 +22,8 @@
 
 
 <div class="form">
-        <form action="updatePatient.php" method="POST" style="margin-left: 100px; margin-right: 100px;">
-            
+        <form action="updatePrescription.php" method="POST" style="margin-left: 100px; margin-right: 100px;">
+            <input type="hidden" value="<?php echo $id?>" name="id" id="id">
             <h3>Editar</h3>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -35,14 +36,14 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">Posologia</span>
                 </div>
-                <input type="text" name="txtPosologia" class="form-control" id="txtPosologia" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                <input type="text" name="txtPosologia" class="form-control" id="txtPosologia" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="<?php echo $receita["posologia"]?>">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">Período em dias</span>
                 </div>
-                <input type="number" name="numPeriodo" class="form-control" id="numPeriodo" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                <input type="number" name="numPeriodo" class="form-control" id="numPeriodo" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="<?php echo $receita["periodo"]?>">
             </div>
 
             <div class="input-group mb-3">
@@ -60,14 +61,26 @@
                         if($pacientes -> num_rows > 0)
                         {
 
-                            while($row = $pacientes -> fetch_assoc()){
+                            while($row = $pacientes -> fetch_assoc())
+                            {
+                                if($receita["cpf_paciente"] === $row["CPF"])
+                                {
                     ?>
-                    
-                        <option value="<?php echo $row["CPF"]?>">
-                            <?php echo $row["nome"] . " - CPF: " . $row["CPF"]?>
-                        </option>
+
+                                    <option value="<?php echo $row["CPF"]?>" selected>
+                                        <?php echo $row["nome"] . " - CPF: " . $row["CPF"]?>
+                                    </option>
                     
                     <?php
+                                }
+                                else
+                                {
+                    ?>
+                                    <option value="<?php echo $row["CPF"]?>">
+                                        <?php echo $row["nome"] . " - CPF: " . $row["CPF"]?>
+                                    </option>
+                    <?php
+                                }
                             }
                         }
                     ?>
@@ -89,14 +102,25 @@
                         if($medicos -> num_rows > 0)
                         {
 
-                            while($row = $medicos -> fetch_assoc()){
+                            while($row = $medicos -> fetch_assoc())
+                            {
+                                if($receita["crm_medico"] === $row["CRM"])
+                                {
                     ?>
-                    
-                    <option value="<?php echo $row["CRM"]?>">
-                        <?php echo $row["nome"] . " - CRM: " . $row["CRM"]?>
-                    </option>
+                                    <option value="<?php echo $row["CRM"]?>" selected>
+                                        <?php echo $row["nome"] . " - CRM: " . $row["CRM"]?>
+                                    </option>
+                    <?php
+                                }
+                                else
+                                {
+                    ?>                    
+                                    <option value="<?php echo $row["CRM"]?>">
+                                        <?php echo $row["nome"] . " - CRM: " . $row["CRM"]?>
+                                    </option>
                     
                     <?php
+                                }
                             }
                         }
                     ?>

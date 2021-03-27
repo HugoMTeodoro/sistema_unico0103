@@ -2,7 +2,9 @@
 
 <?php include("../templates/header.php");
       include_once("../../data/db_connection.php");
-
+        if(isset($_GET))
+        {
+            $cpf = $_GET["cpf"];
 ?>
 
 
@@ -56,14 +58,28 @@
                         if($pacientes -> num_rows > 0)
                         {
 
-                            while($row = $pacientes -> fetch_assoc()){
+                            while($row = $pacientes -> fetch_assoc())
+                            {
+                                if($row["CPF"] === $cpf)
+                                {
+
                     ?>
                     
-                        <option value="<?php echo $row["CPF"]?>">
-                            <?php echo $row["nome"] . " - CPF: " . $row["CPF"]?>
-                        </option>
+                    
+                                    <option value="<?php echo $row["CPF"]?>" selected>
+                                        <?php echo $row["nome"] . " - CPF: " . $row["CPF"]?>
+                                    </option>
                     
                     <?php
+                                }
+                                else
+                                {
+                    ?>
+                                    <option value="<?php echo $row["CPF"]?>" >
+                                        <?php echo $row["nome"] . " - CPF: " . $row["CPF"]?>
+                                    </option>
+                    <?php
+                                }
                             }
                         }
                     ?>
@@ -113,3 +129,6 @@
 
 </body>
 </html>
+<?php
+    }
+?>

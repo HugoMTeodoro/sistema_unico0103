@@ -79,7 +79,9 @@
                                     }
                                 ?>
 
-                                <button type="button" class="btn btn-primary btn-sm">Ver histórico de consultas</button>
+                                <button type="button" class="btn btn-primary btn-sm">
+                                    <a href="../prescription/createPrescription.php?cpf=<?php echo $exibir["paciente_cpf"]?>" style="text-decoration: none; color: white">Gerar uma receita</a>
+                                </button>
                                 <button type="submit" class="btn btn-danger btn-sm" formmethod="post">
                                     <a href="deleteConsult.php?id=<?php echo $exibir ["consulta_id"] ?>" style="text-decoration: none; color: white"> Excluir </a> 
                                     

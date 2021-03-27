@@ -33,7 +33,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../medicalRecord/listMedicalRecord.php">Prontuários</a>
+                  <a class="nav-link" href="../prescription/listPrescription.php">Receitas</a>
                 </li>
             <?php
               }
@@ -52,6 +52,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="../patient/listPatient.php">Pacientes</a>
               </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../medicalRecord/listMedicalRecord.php">Prontuários</a>
+                </li>
               <?php
             }
           ?>
