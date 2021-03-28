@@ -8,6 +8,7 @@ if ((isset($_POST['user'])) && (isset($_POST['senha']))) {
 
     $user = $_POST['user'];
     $senha = $_POST['senha'];
+    $senha=md5($senha);
     $sql = "select * from usuarios where user = '$user' and senha = '$senha'";
     $resultado = $connection->query($sql);
     $num = mysqli_num_rows($resultado);

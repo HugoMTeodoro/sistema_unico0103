@@ -12,12 +12,13 @@
     $numero = $_POST["numCasa"];
     $login = $_POST["login"];
     $senha = $_POST["senha"];
-
-    
+    $senha = md5($senha);
+    $pieces = explode(" ", $nome);
+    $firstname=$pieces[0];
 
     $sql2="INSERT INTO 
-    usuarios (prioridade, user, senha)
-    VALUES(2, '$login', '$senha')";
+    usuarios (prioridade, user, senha, nome)
+    VALUES(2, '$login', '$senha','$firstname')";
     
     $resultado2= $connection -> query($sql2);
     if($resultado2){
@@ -30,7 +31,6 @@
     $sql = "INSERT INTO 
     paciente (CPF, nome, idade, contato, rua, bairro, numero, id_usuario)
     VALUES('$cpf', '$nome', '$idade', '$contato', '$rua', '$bairro', $numero, $last_id)";
-
     $resultado = $connection -> query($sql);
     }
     
