@@ -17,7 +17,6 @@
     }else{
         $sql = "SELECT * FROM receita";
     }
-    echo $sql;
     $dadosConsulta = $connection -> query($sql);
 
     if($dadosConsulta -> num_rows > 0)
