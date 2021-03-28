@@ -1,4 +1,3 @@
-
 <?php
 
     include_once("../../data/db_connection.php");
