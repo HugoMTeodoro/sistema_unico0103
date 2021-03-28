@@ -1,4 +1,4 @@
-
+<?php include("../auth/validar.php")?>
 <?php
 
     include_once("../../data/db_connection.php");
@@ -9,9 +9,17 @@
     $posologia = $_POST["txtPosologia"];
     $medicamento = $_POST["txtMedicamento"];
 
+    $sql2 = "select id_usuario from paciente where cpf = '$cpf_paciente'";
+    echo $sql2;
+    $resultado2 = $connection->query($sql2);
+    $row = $resultado2->fetch_assoc();
+    $id=$row["id_usuario"];
+
     $sql = "INSERT INTO 
-    receita (crm_medico, cpf_paciente, periodo, posologia, medicamento)
-    VALUES('$crm_medico', '$cpf_paciente', '$periodo', '$posologia', '$medicamento')";
+    receita (crm_medico, cpf_paciente, periodo, posologia, medicamento,id_usuario)
+    VALUES('$crm_medico', '$cpf_paciente', '$periodo', '$posologia', '$medicamento',$id)";
+
+    
 
     $resultado = $connection -> query($sql);
 

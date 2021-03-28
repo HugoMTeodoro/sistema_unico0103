@@ -9,9 +9,15 @@
 <?php
 
     include("../../data/db_connection.php");
+    
+    if(isset($_SESSION['paciente'])){
 
-    $sql = "SELECT * FROM receita";
+    $sql = "SELECT * FROM receita where id_usuario=$id_usuario";
 
+    }else{
+        $sql = "SELECT * FROM receita";
+    }
+    echo $sql;
     $dadosConsulta = $connection -> query($sql);
 
     if($dadosConsulta -> num_rows > 0)
@@ -36,7 +42,7 @@
                 ?>
                     <tr>
                         <td><?php 
-                        
+
                             $sql = "SELECT nome FROM medico WHERE CRM = '" . $exibir["crm_medico"] . "'";
 
                             $resultado = $connection -> query($sql);
@@ -48,7 +54,7 @@
                         ?></td>
 
                         <td><?php 
-                        
+
                             $sql = "SELECT nome FROM paciente WHERE CPF = " . $exibir["cpf_paciente"];
 
                             $resultado = $connection -> query($sql);
