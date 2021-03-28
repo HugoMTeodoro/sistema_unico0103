@@ -1,4 +1,3 @@
-<?php include("../auth/valida.php")?>
 
 <?php
 
@@ -11,14 +10,32 @@
     $rua = $_POST["txtRua"];
     $bairro = $_POST["txtBairro"];
     $numero = $_POST["numCasa"];
+    $login = $_POST["login"];
+    $senha = $_POST["senha"];
 
+    
+
+    $sql2="INSERT INTO 
+    usuarios (prioridade, user, senha)
+    VALUES(2, '$login', '$senha')";
+    
+    $resultado2= $connection -> query($sql2);
+    if($resultado2){
+    $sql3 = "SELECT MAX(id_usuario) as max_id FROM usuarios";
+    $resultado3 = $connection->query($sql3);
+    $row = $resultado3->fetch_assoc();
+    $last_id=$row["max_id"];
+
+    
     $sql = "INSERT INTO 
-    paciente (CPF, nome, idade, contato, rua, bairro, numero)
-    VALUES('$cpf', '$nome', '$idade', '$contato', '$rua', '$bairro', $numero)";
+    paciente (CPF, nome, idade, contato, rua, bairro, numero, id_usuario)
+    VALUES('$cpf', '$nome', '$idade', '$contato', '$rua', '$bairro', $numero, $last_id)";
 
     $resultado = $connection -> query($sql);
+    }
+    
 
-    if($resultado)
+    if($resultado && $resultado2)
     {?>
         <script>
             alert("Paciente cadastrado com sucesso");

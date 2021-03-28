@@ -15,28 +15,28 @@ if ((isset($_POST['user'])) && (isset($_POST['senha']))) {
         while ($percorrer = $resultado->fetch_assoc()) {
 
             $adm = $percorrer['prioridade'];
-            $nome = $percorrer['nome'];
+            $nome = $percorrer['id_usuario'];
 
             session_start();
 
             if ($adm == 0) {
                 $_SESSION['adm']=$nome;
-                echo "voce eh adm";
+                //echo "voce eh adm";
             }
 
             if ($adm == 1) {
                 $_SESSION['medico']=$nome;
-                echo "voce eh medico";
+                //echo "voce eh medico";
             }
 
             if ($adm == 2) {
                 $_SESSION['paciente']=$nome;
-                echo "voce eh paciente";
+                //echo "voce eh paciente";
             }
 
 ?>
             <script>
-                window.location = "../home/home.php";
+               window.location = "../home/home.php";
             </script>
         <?php
 
@@ -46,7 +46,7 @@ if ((isset($_POST['user'])) && (isset($_POST['senha']))) {
         ?>
         <script>
             alert("Credenciais incorretas");
-            window.location = "index.php";
+           window.location = "index.php";
         </script>
 <?php
 

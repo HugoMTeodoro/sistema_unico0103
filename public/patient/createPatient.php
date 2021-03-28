@@ -1,6 +1,7 @@
-<?php include("../auth/validar.php")?>
-
-<?php include("../templates/header.php")?>
+<?php 
+    include("../templates/header.php");
+    include_once("../../data/db_connection.php");
+    ?>
 
 <html lang="en">
 <head>
@@ -63,6 +64,20 @@
                     <span class="input-group-text" id="inputGroup-sizing-default">Numero</span>
                 </div>
                 <input type="number" name="numCasa" class="form-control" id="numCasa" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Login</span>
+                </div>
+                <input type="text" name="login" class="form-control" id="login" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Senha</span>
+                </div>
+                <input type="password" name="senha" class="form-control" id="senha" aria-label="Default" aria-describedby="inputGroup-sizing-default">
             </div>
 
             <div class="buttons">

@@ -1,4 +1,5 @@
 <?php include("../templates/header.php") ?>
+
 <html>
 
 <head>
@@ -30,8 +31,9 @@
                   <input name="senha" type="password" class="form-control" placeholder="Password">
                </div>
                <button type="submit" class="btn btn-success">Login</button>
-               <button type="submit" class="btn btn-warning">Register</button>
-            </form>            
+            </form> 
+            <br>
+            <button class="btn btn-warning" onclick="window.location.href='../patient/createPatient.php'">Register</button>          
          </div>
       </div>
    </div>
