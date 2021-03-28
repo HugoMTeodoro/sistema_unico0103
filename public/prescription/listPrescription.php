@@ -1,96 +1,64 @@
-<?php include("../auth/validar.php")?>
+<?php include("../auth/validar.php") ?>
 
-<?php include("../templates/header.php")?>
+<?php include("../templates/header.php") ?>
+
+<?php include("../../data/db_connection.php") ?>
 
 <br>
 <br>
 <br>
 
-<?php
-
-    include("../../data/db_connection.php");
-    
-    if(isset($_SESSION['paciente'])){
-
-    $sql = "SELECT * FROM receita where id_usuario=$id_usuario";
-
-    }else{
-        $sql = "SELECT * FROM receita";
-    }
-    $dadosConsulta = $connection -> query($sql);
-
-    if($dadosConsulta -> num_rows > 0)
-    {
-    ?>
-    <div style="margin-left: 100px; margin-right: 100px;">
+<body>
+    <form method="POST" id="form-pesquisa" action="">
+	<div style="margin-left: 100px; margin-right: 100px;">
         <h2>Receitas</h2>
+
         <br>
-        <table class="table" style="text-align: center;">
-            <tr>
-                <th>Medico</th>
-                <th>Paciente</th>
-                <th>Periodo em dias</th>
-                <th>Posologia</th>
-                <th>Medicamento</th>
-                <th>Opções</th>
-            </tr>
-
-            <?php
-                while($exibir = $dadosConsulta -> fetch_assoc())
-                {
-                ?>
-                    <tr>
-                        <td><?php 
-
-                            $sql = "SELECT nome FROM medico WHERE CRM = '" . $exibir["crm_medico"] . "'";
-
-                            $resultado = $connection -> query($sql);
-
-                            $row = $resultado -> fetch_assoc();
-
-                            echo $row["nome"];
-
-                        ?></td>
-
-                        <td><?php 
-
-                            $sql = "SELECT nome FROM paciente WHERE CPF = " . $exibir["cpf_paciente"];
-
-                            $resultado = $connection -> query($sql);
-
-                            $row = $resultado -> fetch_assoc();
-
-                            echo $row["nome"];
-
-                        ?></td>
-                        <td><?php echo $exibir["periodo"] ?></td>
-                        <td><?php echo $exibir["posologia"] ?></td>
-                        <td><?php echo $exibir["medicamento"] ?></td>
-
-                        <td>
-                            <button type="button" class="btn btn-primary btn-sm">
-                                <a href="printPrescription.php?id=<?php echo $exibir["id"]?>" style="text-decoration: none; color: white">Imprimir</a>
-                            </button>
-
-                            <button type="button" class="btn btn-primary btn-sm">
-                                <a href="editPrescription.php?id=<?php echo $exibir["id"]?>" style="text-decoration: none; color: white">Editar</a>
-                            </button>
-                        
-                            <button type="submit" class="btn btn-danger btn-sm" formmethod="post">
-                                 <a href="deletePrescription.php?id=<?php echo $exibir ["id"] ?>" style="text-decoration: none; color: white"> Excluir </a> 
-                                
-                            </button>
-                        </td>
-                    </tr>
-                <?php
-                    }
-                ?>
-        </table>
+        
+    <div class="buttons">
+                <a href="../prescription/createPrescription.php" class="btn btn-primary">Cadastre uma Receita</a>
+        </div>
+    
+    <br>
+    <form method="POST" id="form-pesquisa" action="">
+	<div class="input-group mb-3">
+	<div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Receita</span>
+                </div>
+				<input type="text" name="pesquisa" class="form-control" id="pesquisa" aria-label="Default" placeholder="Procure a receita" aria-describedby="inputGroup-sizing-default">
+	</div>
     </div>
-<?php
-    }
-    else
-    {
-        echo "Nenhum registro encontrado.";
-    }
-?>
+		
+    </form>
+    <ul class="resultado">
+
+	<?php include("listPrescriptionNoSearch.php") ?>
+
+	</ul>
+</body>
+<script>
+	$(function() {
+
+		$("#pesquisa").keyup(function() {
+			//Recuperar o valor do campo
+			var pesquisa = $(this).val();
+
+			//Verificar se há algo digitado
+			if (pesquisa != '') {
+				var dados = {
+					palavra: pesquisa
+				}
+
+				$.post('listPrescriptionSearching.php', dados, function(retorna) {
+					//Mostra dentro da ul os resultado obtidos 
+					$(".resultado").html(retorna);
+				});
+			} else {
+				$.post('listPrescriptionNoSearch.php', dados, function(retorna) {
+					//Mostra dentro da ul os resultado obtidos 
+					$(".resultado").html(retorna);
+				});
+			}
+		});
+	});
+</script>

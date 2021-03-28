@@ -13,7 +13,7 @@ if ($dadosProntuario->num_rows > 0) {
 
     
 
-    <h2>Prontuarios</h2>
+   
     <br>
     <table class="table" style="text-align: center;">
         <tr>

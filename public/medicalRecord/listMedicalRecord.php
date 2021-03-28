@@ -8,12 +8,29 @@
 <br>
 <br>
 
+
+
+
 <body>
+   
+	<div style="margin-left: 100px; margin-right: 100px;">
+        <h2>Prontuários</h2>
+
+        <br>
+        
+    <div class="buttons">
+                <a href="../medicalRecord/createMedicalRecord.php" class="btn btn-primary">Cadastre um Prontuário</a>
+        </div>
+    
+    <br>
     <form method="POST" id="form-pesquisa" action="">
-        <label>Pesquisar: </label>
-        <input type="text" name="pesquisa" id="pesquisa" placeholder="Procure o pronturario desejado" SIZE=100>
-        <br>
-        <br>
+	<div class="input-group mb-3">
+	<div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Pesquisa</span>
+                </div>
+				<input type="text" name="pesquisa" class="form-control" id="pesquisa" aria-label="Default" placeholder="Procure um prontuário" aria-describedby="inputGroup-sizing-default">
+	</div>
+    </div>
     </form>
     <ul class="resultado">
 

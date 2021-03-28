@@ -2,8 +2,8 @@
     
     $servername = "localhost";
     $username = "root";
-    $password = "";
-    $dbname = "sistema_unico";
+    $password = "admindb";
+    $dbname = "sistema_unico1";
 
     $connection = new mysqli($servername, $username, $password, $dbname);
     

@@ -1,68 +1,64 @@
-<?php include("../auth/validaMedico.php")?>
-<?php include("../templates/header.php")?>
+<?php include("../auth/validar.php") ?>
+
+<?php include("../templates/header.php") ?>
+
+<?php include("../../data/db_connection.php") ?>
 
 <br>
 <br>
 <br>
 
-<?php
-
-    include("../../data/db_connection.php");
-
-    $sql = "SELECT * FROM paciente";
-
-    $dadosConsulta = $connection -> query($sql);
-
-    if($dadosConsulta -> num_rows > 0)
-    {
-    ?>
+<body>
+    
     <div style="margin-left: 100px; margin-right: 100px;">
         <h2>Pacientes</h2>
-        <br>
-        <table class="table" style="text-align: center;">
-            <tr>
-                <th>CPF</th>
-                <th>Nome</th>
-                <th>Idade</th>
-                <th>Contato</th>
-                <th>Rua</th>
-                <th>Bairro</th>
-                <th>Numero</th>
-                <th>Configuracoes</th>
-            </tr>
 
-            <?php
-                while($exibir = $dadosConsulta -> fetch_assoc())
-                {
-                ?>
-                    <tr>
-                        <td><?php echo $exibir["CPF"] ?></td>
-                        <td><?php echo $exibir["nome"] ?></td>
-                        <td><?php echo $exibir["idade"] ?></td>
-                        <td><?php echo $exibir["contato"] ?></td>
-                        <td><?php echo $exibir["rua"] ?></td>
-                        <td><?php echo $exibir["bairro"] ?></td>
-                        <td><?php echo $exibir["numero"] ?></td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-sm">
-                                <a href="editPatient.php?cpf=<?php echo $exibir["CPF"]?>" style="text-decoration: none; color: white">Editar</a>
-                            </button>
-                        
-                            <button type="submit" class="btn btn-danger btn-sm" formmethod="post">
-                                 <a href="deletePatient.php?cpf=<?php echo $exibir ["CPF"] ?>" style="text-decoration: none; color: white"> Excluir </a> 
-                                
-                            </button>
-                        </td>
-                    </tr>
-                <?php
-                    }
-                ?>
-        </table>
+        <br>
+        
+    <div class="buttons">
+                <a href="../patient/createPatient.php" class="btn btn-primary">Cadastre um Paciente</a>
+        </div>
+    
+    <br>
+    <form method="POST" id="form-pesquisa" action="">
+	<div class="input-group mb-3">
+	<div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Pesquisa</span>
+                </div>
+				<input type="text" name="pesquisa" class="form-control" id="pesquisa" aria-label="Default" placeholder="Procure o paciente" aria-describedby="inputGroup-sizing-default">
+	</div>
     </div>
-<?php
-    }
-    else
-    {
-        echo "Nenhum registro encontrado.";
-    }
-?>
+		
+    </form>
+    <ul class="resultado">
+
+	<?php include("listPatientNoSearch.php") ?>
+
+	</ul>
+</body>
+<script>
+	$(function() {
+
+		$("#pesquisa").keyup(function() {
+			//Recuperar o valor do campo
+			var pesquisa = $(this).val();
+
+			//Verificar se há algo digitado
+			if (pesquisa != '') {
+				var dados = {
+					palavra: pesquisa
+				}
+
+				$.post('listPatientSearching.php', dados, function(retorna) {
+					//Mostra dentro da ul os resultado obtidos 
+					$(".resultado").html(retorna);
+				});
+			} else {
+				$.post('listMedicalRecordNoSearch.php', dados, function(retorna) {
+					//Mostra dentro da ul os resultado obtidos 
+					$(".resultado").html(retorna);
+				});
+			}
+		});
+	});
+</script>
