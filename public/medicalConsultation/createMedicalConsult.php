@@ -1,4 +1,4 @@
-
+<?php include("../auth/validar.php")?>
 <?php include("../auth/validaMedico.php")?>
 
 
@@ -64,7 +64,8 @@
                     <option value="-1" selected>Selecione um médico disponível</option>
                     <?php
 
-                        $sqlQuery = "SELECT * FROM medico ORDER BY nome";
+                        $sqlQuery = "SELECT * FROM medico where id_usuario='$id_usuario'";
+
 
                         $medicos = $connection -> query($sqlQuery);
 
