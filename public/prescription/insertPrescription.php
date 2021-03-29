@@ -10,7 +10,6 @@
     $medicamento = $_POST["txtMedicamento"];
 
     $sql2 = "select id_usuario from paciente where cpf = '$cpf_paciente'";
-    echo $sql2;
     $resultado2 = $connection->query($sql2);
     $row = $resultado2->fetch_assoc();
     $id=$row["id_usuario"];

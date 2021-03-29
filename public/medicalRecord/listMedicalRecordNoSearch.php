@@ -1,9 +1,30 @@
 <?php include("../../data/db_connection.php") ?>
+<?php include("../auth/validar.php") ?>
 <?php
 
 
 
 $sql = "SELECT * FROM prontuario";
+
+if (isset($_SESSION['paciente'])) {
+    $sql2 = "select paciente_cpf from paciente where id_usuario=$id_usuario";
+    $resultado2 = $connection->query($sql2);
+    $row = $resultado2->fetch_assoc();
+
+    $cpf=$row["paciente_cpf"];
+    
+    $sql = "SELECT * FROM prontuario where paciente_cpf=$cpf";
+}
+if (isset($_SESSION['medico'])) {
+    $sql2 = "select CRM from medico where id_usuario=$id_usuario";
+    $resultado2 = $connection->query($sql2);
+    $row = $resultado2->fetch_assoc();
+
+    $crm=$row["CRM"];
+    
+    $sql = "SELECT * FROM prontuario where crm_medico=$crm";
+    
+}
 
 $dadosProntuario = $connection->query($sql);
 

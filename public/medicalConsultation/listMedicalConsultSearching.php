@@ -1,4 +1,4 @@
-<?php include("../auth/validaMedico.php")?>
+<?php include("../auth/validar.php")?>
 
 
 <?php
@@ -11,6 +11,20 @@ $usuarios = filter_input(INPUT_POST, 'palavra', FILTER_SANITIZE_STRING);
     include("../../data/db_connection.php");
 
     $sql = "SELECT * FROM consulta WHERE crm_medico LIKE '%$usuarios%' ";
+    if (isset($_SESSION['paciente'])) {
+        $sql = "SELECT * FROM consulta where id_usuario=$id_usuario and crm_medico LIKE '%$usuarios%'";
+    }
+    if (isset($_SESSION['medico'])) {
+        $sql2 = "select CRM from medico where id_usuario=$id_usuario";
+        $resultado2 = $connection->query($sql2);
+        $row = $resultado2->fetch_assoc();
+    
+        $crm = $row["CRM"];
+    
+        $sql = "SELECT * FROM consulta where crm_medico=$crm and crm_medico LIKE '%$usuarios%'";
+    }
+
+
 
     $dadosConsulta = $connection -> query($sql);
 

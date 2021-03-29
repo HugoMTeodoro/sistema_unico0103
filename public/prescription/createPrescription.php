@@ -4,7 +4,7 @@
       include_once("../../data/db_connection.php");
         if(isset($_GET))
         {
-            $cpf = $_GET["cpf"];
+           // $cpf = $_GET["cpf"];
 ?>
 
 
@@ -85,7 +85,7 @@
                     ?>
                 </select>
             </div>
-
+                    
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">Médico</span>
@@ -94,7 +94,7 @@
                     <option value="-1" selected>Selecione um médico disponível</option>
                     <?php
 
-                        $sqlQuery = "SELECT * FROM medico ORDER BY nome";
+                        $sqlQuery = "SELECT * FROM medico where id_usuario='$id_usuario'";
 
                         $medicos = $connection -> query($sqlQuery);
 

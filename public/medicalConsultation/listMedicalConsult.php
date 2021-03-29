@@ -16,7 +16,7 @@
         <br>
         
     <div class="buttons">
-                <a href="../medicalConsult/createMedicalConsult.php" class="btn btn-primary">Cadastre uma Consulta</a>
+                <a href="../medicalConsultation/createMedicalConsult.php" class="btn btn-primary">Cadastre uma Consulta</a>
         </div>
     
     <br>

@@ -14,12 +14,18 @@
         <h2>Receitas</h2>
 
         <br>
-        
-    <div class="buttons">
+        <?php
+		if(isset($_SESSION['medico']) or  isset($_SESSION['adm'])){
+			?>
+			<div class="buttons">
                 <a href="../prescription/createPrescription.php" class="btn btn-primary">Cadastre uma Receita</a>
         </div>
     
     <br>
+	<?php
+		}
+		?>
+    
     <form method="POST" id="form-pesquisa" action="">
 	<div class="input-group mb-3">
 	<div class="input-group-prepend">

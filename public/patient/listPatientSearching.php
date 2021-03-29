@@ -9,7 +9,7 @@ $usuarios = filter_input(INPUT_POST, 'palavra', FILTER_SANITIZE_STRING);
 
     include("../../data/db_connection.php");
 
-    $sql = "SELECT * FROM paciente WHERE CPF LIKE '%$usuarios%' ";
+    $sql = "SELECT * FROM paciente WHERE CPF LIKE '%$usuarios%' or nome LIKE '%$usuarios%'";
 
     $dadosConsulta = $connection -> query($sql);
 
