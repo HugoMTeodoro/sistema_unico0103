@@ -52,7 +52,7 @@
                     <div class="card h-100">
                     <div class="card-body">
                         <h4 class="card-title">Você é um paciente ?</h4>
-                        <p class="card-text">O sistema guarda todos os seus prontuários e históricos, além da agenda 
+                        <p class="card-text">O sistema guarda todos as suas receitas e históricos, além da agenda 
                          de suas consultas.</p>
                     </div>
                     <div class="card-footer">

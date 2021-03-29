@@ -49,7 +49,6 @@ $usuarios = filter_input(INPUT_POST, 'palavra', FILTER_SANITIZE_STRING);
     ?>
     <div class="form">
         <div style="margin-left: 100px; margin-right: 100px;">
-            <h2>Consultas</h2>
             <br>
             <table class="table" style="text-align: center;">
                 <tr>
