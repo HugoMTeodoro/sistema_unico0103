@@ -9,7 +9,11 @@ $usuarios = filter_input(INPUT_POST, 'palavra', FILTER_SANITIZE_STRING);
 
     include("../../data/db_connection.php");
 
-    $sql = "SELECT * FROM receita where id_usuario=$id_usuario";
+    $sql = "SELECT * FROM receita";
+    if(isset($_SESSION['paciente'])){
+        $sql = "SELECT * FROM receita where id_usuario=$id_usuario"; 
+    }
+    
 
     $dadosConsulta = $connection -> query($sql);
 

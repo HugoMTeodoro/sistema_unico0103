@@ -1,5 +1,8 @@
 <?php
-session_start();
+if ( session_status() !== PHP_SESSION_ACTIVE ){
+    session_start();
+}
+
 if(isset($_SESSION['medico'])){
     $id_usuario=$_SESSION['medico'];
 }else{

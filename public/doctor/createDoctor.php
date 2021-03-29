@@ -44,6 +44,9 @@
                 <input type="number" name="numIdade" class="form-control" id="numIdade" aria-label="Default" aria-describedby="inputGroup-sizing-default">
             </div>
 
+            
+
+
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">Especialidade</span>
@@ -69,6 +72,20 @@
                         }
                     ?>
                 </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Login</span>
+                </div>
+                <input type="text" name="login" class="form-control" id="login" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Senha</span>
+                </div>
+                <input type="password" name="senha" class="form-control" id="senha" aria-label="Default" aria-describedby="inputGroup-sizing-default">
             </div>
 
             <div class="buttons">

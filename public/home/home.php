@@ -30,7 +30,7 @@
                                                 e agendamento das consultas!</p>
                     </div>
                     <div class="card-footer">
-                        <a href="../medicalConsultation/listMedicalConsult.php" class="btn btn-primary">Veja a lista de consultas</a>
+                        
                     </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                                         oferecendo um histórico dos prontuários e das consultas.</p>
                     </div>
                     <div class="card-footer">
-                        <a href="create.php" class="btn btn-primary">Comece a usar</a>
+                        
                     </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                          de suas consultas.</p>
                     </div>
                     <div class="card-footer">
-                        <a href="../medicalConsultation/listMedicalConsult.php" class="btn btn-primary">Veja a lista de consultas</a>
+                        
                     </div>
                     </div>
                 </div>
