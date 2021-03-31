@@ -93,8 +93,12 @@
                 <select class="form-select" name="crm_medico" id="crm_medico">
                     <option value="-1" selected>Selecione um médico disponível</option>
                     <?php
-
-                        $sqlQuery = "SELECT * FROM medico where id_usuario='$id_usuario'";
+                       if(isset($_SESSION['adm'])){
+                        $sqlQuery = "SELECT * FROM medico";
+                        }else{
+                            $sqlQuery = "SELECT * FROM medico where id_usuario='$id_usuario'";
+                        }
+                        
 
                         $medicos = $connection -> query($sqlQuery);
 
